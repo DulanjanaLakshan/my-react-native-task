@@ -3,17 +3,24 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import React, { useState } from 'react'
 import userIcon from '../assets/icons/user.png'
 import { useNavigation } from '@react-navigation/native'
+import axios from 'axios'
 
 const SingUpScreen = () => {
+
+  const baseUrl = 'http://localhost:8080';
+
   const navigation = useNavigation();
-  const [id, setId] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lasttName, setLasttName] = useState('');
+  const [email, setEmail] = useState('');
+  const [contact, setContact] = useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   const goToMessageScreen = () => {
-    navigation.navigate('Home', {
-      id,
-    });
+    navigation.navigate('Home', { firstName,lasttName,email,contact,username,password});
   };
+
+
   return (
     <SafeAreaView style={style.mainStyle}>
       <View style={style.userIconStyle} >
@@ -21,21 +28,18 @@ const SingUpScreen = () => {
       </View>
       <View>
         <View style={style.names}>
-          < TextInput placeholder='ID (U001)' placeholderTextColor='#FFF8DC' style={style.textFirstNameInput} onChangeText={text => setId(text)} />
-        </View>
-        <View style={style.names}>
           <TextInput placeholder='First Name' placeholderTextColor='#FFF8DC' style={style.textFirstNameInput} onChangeText={text => setFirstName(text)} />
           <TextInput placeholder='Last Name' placeholderTextColor='#FFF8DC' style={style.textFirstNameInput} onChangeText={text => setLasttName(text)} />
         </View>
         <View style={style.names}>
-          <TextInput placeholder='Email' placeholderTextColor='#FFF8DC' style={style.textEmailInput} textEmailInput />
+          <TextInput placeholder='Email' onChangeText={text => setEmail(text)} placeholderTextColor='#FFF8DC' style={style.textEmailInput} textEmailInput />
         </View>
         <View style={style.names}>
-          <TextInput placeholder='Contact' placeholderTextColor='#FFF8DC' style={style.textEmailInput} />
+          <TextInput placeholder='Contact' onChangeText={text => setContact(text)} placeholderTextColor='#FFF8DC' style={style.textEmailInput} />
         </View>
         <View style={style.names}>
-          <TextInput placeholder='UserName' placeholderTextColor='#FFF8DC' style={style.textFirstNameInput} />
-          <TextInput placeholder="Password" secureTextEntry placeholderTextColor="#FFF8DC" style={style.textFirstNameInput} />
+          <TextInput placeholder='UserName' onChangeText={text => setUsername(text)} placeholderTextColor='#FFF8DC' style={style.textFirstNameInput} />
+          <TextInput placeholder="Password" onChangeText={text => setPassword(text)} secureTextEntry placeholderTextColor="#FFF8DC" style={style.textFirstNameInput} />
         </View>
       </View>
       <View style={style.names}>

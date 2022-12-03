@@ -8,13 +8,12 @@ const HomeScreen = () => {
     <View  style={style.mainStyle}>
       <Text style={style.text}>HomeScreen</Text>
       <View style={style.main}>
-        <Text style={style.textValue}>Id = {route.params.id}</Text>
-        <Text style={style.textValue}>First Name = Dulanjana</Text>
-        <Text style={style.textValue}>Last Name = Lakshan</Text>
-        <Text style={style.textValue}>Email = dulanjana20013@gmail.com</Text>
-        <Text style={style.textValue}>Contact = 071-2280020</Text>
-        <Text style={style.textValue}>UserName = Dulanjana</Text>
-        <Text style={style.textValue}>Password = Dulanjana$2001</Text>
+        <Text style={style.textValue}>First Name = {route.params.firstName}</Text>
+        <Text style={style.textValue}>Last Name = {route.params.lasttName}</Text>
+        <Text style={style.textValue}>Email = {route.params.email}</Text>
+        <Text style={style.textValue}>Contact = {route.params.contact}</Text>
+        <Text style={style.textValue}>UserName = {route.params.username}</Text>
+        <Text style={style.textValue}>Password = {route.params.password}</Text>
       </View>
     </View>
   )
