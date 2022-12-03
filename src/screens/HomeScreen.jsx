@@ -1,12 +1,14 @@
 import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
+import { useRoute } from '@react-navigation/native';
 
 const HomeScreen = () => {
+  const route = useRoute();
   return (
     <View  style={style.mainStyle}>
       <Text style={style.text}>HomeScreen</Text>
       <View style={style.main}>
-        <Text style={style.textValue}>Id = 001</Text>
+        <Text style={style.textValue}>Id = {route.params.id}</Text>
         <Text style={style.textValue}>First Name = Dulanjana</Text>
         <Text style={style.textValue}>Last Name = Lakshan</Text>
         <Text style={style.textValue}>Email = dulanjana20013@gmail.com</Text>

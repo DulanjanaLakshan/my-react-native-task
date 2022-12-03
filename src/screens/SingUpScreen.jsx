@@ -5,13 +5,15 @@ import userIcon from '../assets/icons/user.png'
 import { useNavigation } from '@react-navigation/native'
 
 const SingUpScreen = () => {
-  const navigation=useNavigation();
-  const [firstName,setFirstName]=useState('');
-  const [lasttName,setLasttName]=useState('');
-
-  singup=()=>{
-    alert(firstName + ' '+lasttName);
-  }
+  const navigation = useNavigation();
+  const [id, setId] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lasttName, setLasttName] = useState('');
+  const goToMessageScreen = () => {
+    navigation.navigate('Home', {
+      id,
+    });
+  };
   return (
     <SafeAreaView style={style.mainStyle}>
       <View style={style.userIconStyle} >
@@ -19,8 +21,11 @@ const SingUpScreen = () => {
       </View>
       <View>
         <View style={style.names}>
-          <TextInput placeholder='First Name' placeholderTextColor='#FFF8DC' style={style.textFirstNameInput} onChangeText={text=>setFirstName(text)}/>
-          <TextInput placeholder='Last Name' placeholderTextColor='#FFF8DC' style={style.textFirstNameInput} onChangeText={text=>setLasttName(text)}/>
+          < TextInput placeholder='ID (U001)' placeholderTextColor='#FFF8DC' style={style.textFirstNameInput} onChangeText={text => setId(text)} />
+        </View>
+        <View style={style.names}>
+          <TextInput placeholder='First Name' placeholderTextColor='#FFF8DC' style={style.textFirstNameInput} onChangeText={text => setFirstName(text)} />
+          <TextInput placeholder='Last Name' placeholderTextColor='#FFF8DC' style={style.textFirstNameInput} onChangeText={text => setLasttName(text)} />
         </View>
         <View style={style.names}>
           <TextInput placeholder='Email' placeholderTextColor='#FFF8DC' style={style.textEmailInput} textEmailInput />
@@ -34,10 +39,10 @@ const SingUpScreen = () => {
         </View>
       </View>
       <View style={style.names}>
-        <TouchableOpacity style={style.button}  onPress={()=>navigation.navigate("Login")}>
+        <TouchableOpacity style={style.button} onPress={() => navigation.navigate("Login")}>
           <Text>Login</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={style.button} onPress={singup}>
+        <TouchableOpacity style={style.button} onPress={goToMessageScreen}>
           <Text>Sing Up</Text>
         </TouchableOpacity>
       </View>
